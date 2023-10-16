@@ -1,0 +1,101 @@
+import React from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  ImageBackground,
+} from "react-native";
+import { Link } from "expo-router";
+import { useHeaderHeight } from "@react-navigation/elements";
+import { Stack } from "expo-router";
+import appColor from "../src/themes/appColor";
+import { LinearGradient } from "expo-linear-gradient";
+
+export default function App() {
+  const headerHeight = useHeaderHeight();
+  return (
+    <SafeAreaView
+      style={{
+        // paddingTop: headerHeight + 20,
+        // padding: 15,
+        backgroundColor: appColor.darkBackground,
+        flex: 1,
+      }}
+    >
+      <Stack.Screen options={{ header: () => null }} />
+      <ImageBackground
+        style={{
+          flex: 1,
+          flexDirection: "column",
+          justifyContent: "space-around",
+        }}
+        source={require("../assets/splash.jpg")}
+      >
+        <LinearGradient
+          colors={[
+            "transparent",
+            appColor.darkBackground,
+            appColor.darkBackground,
+            appColor.darkBackground,
+          ]}
+          style={{
+            // backgroundColor: "red",
+            height: "40%",
+            width: "100%",
+            position: "absolute",
+            bottom: 0,
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 28,
+              color: appColor.lightText,
+              fontFamily: "Quicksand-Bold",
+            }}
+          >
+            Plan Your Travels Ahead
+          </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              color: appColor.lightText,
+              fontFamily: "Quicksand-Regular",
+              textAlign: "center",
+              paddingHorizontal: 30,
+              paddingVertical: 30,
+            }}
+          >
+            Visit and Book Places, Hotels, Restaurants and Activities
+            Effortlessly
+          </Text>
+          <LinearGradient
+            style={{
+              alignItems: "center",
+              justifyContent: "center",
+              width: "80%",
+              height: 60,
+              borderWidth: 1,
+              borderColor: "black",
+            }}
+            colors={["#edd7a8", "#edc56d"]}
+            start={{ x: 0, y: 1 }}
+            end={{ x: 1, y: 0 }}
+          >
+            <Link replace href={"/home"} asChild>
+              <Text
+                style={{
+                  fontSize: 15,
+                  fontFamily: "Quicksand-Bold",
+                }}
+              >
+                Get Started
+              </Text>
+            </Link>
+          </LinearGradient>
+        </LinearGradient>
+      </ImageBackground>
+    </SafeAreaView>
+  );
+}
