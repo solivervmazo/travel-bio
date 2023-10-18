@@ -7,13 +7,15 @@ import { useRouter } from "expo-router";
 import IconButton from "../src/components/IconButton";
 import HeaderTitle from "../src/components/HeaderTitle";
 
-SplashScreen.preventAutoHideAsync();
+// SplashScreen.preventAutoHideAsync();
 
 const AppLayout = () => {
   const [fontsLoaded, fontError] = useFonts({
     "Quicksand-Light": require("../assets/fonts/Quicksand-Light.ttf"),
     "Quicksand-Regular": require("../assets/fonts/Quicksand-Regular.ttf"),
     "Quicksand-Bold": require("../assets/fonts/Quicksand-Bold.ttf"),
+    "Quicksand-Medium": require("../assets/fonts/Quicksand-Medium.ttf"),
+    "Quicksand-SemiBold": require("../assets/fonts/Quicksand-SemiBold.ttf"),
   });
   const router = useRouter();
 
@@ -21,8 +23,7 @@ const AppLayout = () => {
     if (fontsLoaded || fontError) {
       await SplashScreen.hideAsync();
     }
-  }, [fontsLoaded, fontError]);
-
+  }, []);
   if (!fontsLoaded && !fontError) {
     return null;
   }
@@ -41,7 +42,12 @@ const AppLayout = () => {
         ),
         headerLeft: () =>
           router.canGoBack() ? (
-            <IconButton icon={"Back"} size={32} color={"lightText"} />
+            <IconButton
+              icon={"Back"}
+              size={32}
+              color={"lightText"}
+              onPress={router.back}
+            />
           ) : null,
         headerTransparent: true,
       }}

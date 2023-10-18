@@ -1,28 +1,14 @@
 import React from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  ImageBackground,
-} from "react-native";
+import { View, Text, SafeAreaView, ImageBackground } from "react-native";
 import { Link } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Stack } from "expo-router";
-import appColor from "../src/themes/appColor";
 import { LinearGradient } from "expo-linear-gradient";
+import { appColor, appStyles } from "../src/themes";
 
 export default function App() {
-  const headerHeight = useHeaderHeight();
   return (
-    <SafeAreaView
-      style={{
-        // paddingTop: headerHeight + 20,
-        // padding: 15,
-        backgroundColor: appColor.darkBackground,
-        flex: 1,
-      }}
-    >
+    <SafeAreaView style={appStyles.screenContainer}>
       <Stack.Screen options={{ header: () => null }} />
       <ImageBackground
         style={{

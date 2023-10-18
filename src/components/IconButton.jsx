@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { BlurView } from "expo-blur";
 import Icon from "../ui/Icon";
 import { TouchableOpacity } from "react-native";
@@ -12,21 +12,19 @@ const IconButton = ({
 }) => {
   return (
     <BlurView
-      intensity={10}
-      tint={"light"}
-      blurReductionFactor={0}
       style={[
         styles.wrapper,
         {
           width: size,
           height: size,
-          borderRadius: size / 2,
+          borderRadius: parseInt(size / 2),
           borderColor: appColor[color],
+          overflow: "hidden",
         },
       ]}
     >
       <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
-        {Icon.Icons(icon, { size: size * 0.7, color: appColor[color] })}
+        {Icon.Icons(icon, { size: size * 0.6, color: appColor[color] })}
       </TouchableOpacity>
     </BlurView>
   );
