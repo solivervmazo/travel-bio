@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { appSizes } from "../themes";
 
 const PrimaryButton = (props) => {
   const {
     text,
     icon,
-    size = 13,
+    size = appSizes.Text.regular,
     color,
     textColor,
     iconColor,

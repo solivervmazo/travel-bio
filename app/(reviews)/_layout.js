@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ReviewFeedScreen } from "../../src/screens";
+import { ReviewsFeedScreen } from "../../src/screens";
 import { ContextReviewsScreen } from "../../src/components/reviews";
 
 const DATA = {
@@ -11,7 +11,7 @@ const ScreenLayout = () => {
   const [data, setData] = useState(DATA);
   return (
     <ContextReviewsScreen.Provider value={{ data }}>
-      <ReviewFeedScreen />
+      <ReviewsFeedScreen />
     </ContextReviewsScreen.Provider>
   );
 };

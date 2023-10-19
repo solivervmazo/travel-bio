@@ -1,3 +1,3 @@
 import IconButton from "./IconButton";
-
-export { IconButton };
+import UserAvatar from "./UserAvatar";
+export { IconButton, UserAvatar };

@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { appColor } from "../../themes";
+import { appColors, appConstants, appFonts, appSizes } from "../../themes";
 
 const ProductDescription = ({
   description,
@@ -8,36 +8,39 @@ const ProductDescription = ({
   onToggle = () => {},
 }) => {
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onToggle}>
-      <View
-        style={{
-          padding: 10,
-          backgroundColor: appColors.darkBgSecondary,
-          borderRadius: 8,
-        }}
-      >
-        <Text
-          style={{
-            color: appColors.lightText,
-            fontFamily: "Quicksand-Regular",
-            fontSize: 13,
-          }}
-        >
+    <TouchableOpacity
+      activeOpacity={appConstants.ACTIVE_OPACITY}
+      onPress={onToggle}
+    >
+      <View style={styles.container}>
+        <Text style={styles.description}>
           {description}
-          <Text
-            style={{
-              paddingHorizontal: 1,
-              color: appColors.themeColor,
-              fontFamily: "Quicksand-Bold",
-              fontSize: 13,
-            }}
-          >{`  Read ${truncated ? "more" : "less"}`}</Text>
+          <Text style={styles.seeMoreLess}>{`  Read ${
+            truncated ? "more" : "less"
+          }`}</Text>
         </Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+    backgroundColor: appColors.darkBgSecondary,
+    borderRadius: 8,
+  },
+  description: {
+    color: appColors.lightText,
+    fontFamily: appFonts.regular,
+    fontSize: appSizes.Text.regular,
+  },
+  seeMoreLess: {
+    paddingHorizontal: 1,
+    color: appColors.themeColor,
+    fontFamily: appFonts.semiBold,
+    fontSize: appSizes.Text.regular,
+  },
+});
 
 export default ProductDescription;

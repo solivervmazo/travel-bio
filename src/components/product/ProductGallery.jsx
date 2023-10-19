@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  FlatList,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
-
+import { FlatList, ImageBackground, StyleSheet, View } from "react-native";
+import { Spacer } from "../../ui";
 const ProductGallery = (props) => {
   const { data } = props;
   return (
@@ -15,15 +9,11 @@ const ProductGallery = (props) => {
       data={data}
       keyExtractor={(item) => item.id}
       showsHorizontalScrollIndicator={false}
-      ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
+      ItemSeparatorComponent={() => <Spacer size={10} />}
       renderItem={({ item: item }) => (
         <ImageBackground
           source={item.src}
-          style={{
-            height: 80,
-            backgroundColor: "red",
-            aspectRatio: "1/1",
-          }}
+          style={styles.image}
           key={item.id}
         ></ImageBackground>
       )}
@@ -31,6 +21,12 @@ const ProductGallery = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  image: {
+    height: 120,
+    backgroundColor: "red",
+    aspectRatio: "1/1",
+  },
+});
 
 export default ProductGallery;

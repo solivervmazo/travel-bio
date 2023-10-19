@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { appColors, appSpacing, appStyles } from "../../themes";
+import { appColors, appSizes, appSpacing, appStyles } from "../../themes";
 import { Divider } from "../../ui";
 import SectionHeader from "../SectionHeader";
 import ProductDescription from "./ProductDescription";
@@ -113,47 +113,30 @@ const ProductContent = () => {
     }
   }, [description, truncated]);
   return (
-    <View
-      style={[
-        appStyles.screenContainer,
-        { paddingBottom: 70, paddingHorizontal: appSpacing.screenPaddingLeft },
-      ]}
-    >
+    <View style={[appStyles.screenContainer, styles.container]}>
       <ProductContentBar data={OFFERS} />
-      <Divider
-        horizontal
-        style={{
-          backgroundColor: appColors.lightTextSecondary,
-          marginVertical: 15,
-        }}
-      />
+      <Divider horizontal style={styles.contentDivider} />
       <ProductDescription
         description={description}
         truncated={truncated}
         onToggle={toggleDescription}
       />
-      <Divider
-        horizontal
-        style={{
-          backgroundColor: appColors.lightTextSecondary,
-          marginVertical: 15,
-        }}
-      />
+      <Divider horizontal style={styles.contentDivider} />
       <SectionHeader
         title={`Photos`}
-        titleSize={18}
+        titleSize={appSizes.Text.medium}
         btnText={`See all`}
         containerStyle={{ marginBottom: 10 }}
       />
       <ProductGallery data={PHOTOS} />
       <SectionHeader
         title={`Reviews(74)`}
-        titleSize={18}
+        titleSize={appSizes.Text.medium}
         btnText={`See all`}
         containerStyle={{ marginVertical: 10 }}
         onLink={() => routes.reviews({ category: `hotel`, id: 1 })}
       />
-      <View style={{ width: "100%" }}>
+      <View style={styles.reviewsContainer}>
         {REVIEWS.map((data) => (
           <ReviewCard data={data} key={data.id} />
         ))}
@@ -162,6 +145,16 @@ const ProductContent = () => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    paddingBottom: appSpacing.screenPaddingBottom,
+    paddingHorizontal: appSpacing.screenPaddingLeft,
+  },
+  contentDivider: {
+    backgroundColor: appColors.lightTextSecondary,
+    marginVertical: 15,
+  },
+  reviewsContainer: { width: "100%" },
+});
 
 export default ProductContent;

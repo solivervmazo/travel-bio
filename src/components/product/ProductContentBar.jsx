@@ -1,18 +1,14 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Icon } from "../../ui";
-import { appColors, appStyles } from "../../themes";
+import { appColors, appSizes, appStyles } from "../../themes";
+import { Spacer } from "../../ui";
 
 const ProductContentBar = (props) => {
   const { data } = props;
   return (
-    <View
-      style={{
-        width: "100%",
-        flexDirection: "row",
-      }}
-    >
-      <View style={{ flexGrow: 1 }}>
+    <View style={styles.container}>
+      <View style={styles.wrapper}>
         <FlatList
           horizontal
           data={data}
@@ -23,13 +19,13 @@ const ProductContentBar = (props) => {
             return (
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {Icon.Icons(icon, {
-                  size: 20,
+                  size: appSizes.Icon.medium,
                   color: appColors.lightText,
                   style: { ...appStyles.textShadow },
                 })}
                 <Text
                   style={{
-                    fontSize: 12,
+                    fontSize: appSizes.Text.small,
                     color: appColors.lightTextSecondary,
                     ...appStyles.textShadow,
                   }}
@@ -39,14 +35,14 @@ const ProductContentBar = (props) => {
               </View>
             );
           }}
-          ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
+          ItemSeparatorComponent={() => <Spacer size={20} />}
           keyExtractor={(item) => item.id}
         />
       </View>
-      <View style={{ flexShrink: 1 }}>
-        <View style={{ alignItems: "center", justifyContent: "space-around" }}>
+      <View style={styles.barActionContainer}>
+        <View style={styles.barActionWrapper}>
           <Icon.MenuDot
-            size={25}
+            size={appSizes.Icon.large}
             color={appColors.lightText}
             style={{ ...appStyles.textShadow }}
           />
@@ -56,6 +52,14 @@ const ProductContentBar = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    flexDirection: "row",
+  },
+  wrapper: { flexGrow: 1 },
+  barActionContainer: { flexShrink: 1 },
+  barActionWrapper: { alignItems: "center", justifyContent: "space-around" },
+});
 
 export default ProductContentBar;

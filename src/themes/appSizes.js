@@ -6,6 +6,7 @@ export default appSizes = {
     regular: 16,
     medium: 20,
     large: 24,
+    xxLarge: 42,
   },
   Icon: {
     xSmall: 10,
@@ -19,6 +20,9 @@ export default appSizes = {
     small: 14, //
     regular: 28,
     medium: 32,
-    large: 32, //
+    large: 38,
+  },
+  Avatar: {
+    regular: 40,
   },
 };

@@ -2,12 +2,18 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { appSizes } from "../themes";
 
 const Icons = (icon, props = {}) => Icon[icon](props);
 
 class _Icon {
   constructor(props) {
-    const { size = 24, color = "black", fill = false, style = {} } = props;
+    const {
+      size = appSizes.Icon.regular,
+      color = "black",
+      fill = false,
+      style = {},
+    } = props;
     this.size = size;
     this.color = color;
     this.fill = fill;
