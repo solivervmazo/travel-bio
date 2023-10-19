@@ -4,7 +4,7 @@ import { Link } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { appColor, appStyles } from "../src/themes";
+import { appColors, appStyles } from "../src/themes";
 
 export default function App() {
   return (
@@ -21,9 +21,9 @@ export default function App() {
         <LinearGradient
           colors={[
             "transparent",
-            appColor.darkBackground,
-            appColor.darkBackground,
-            appColor.darkBackground,
+            appColors.darkBackground,
+            appColors.darkBackground,
+            appColors.darkBackground,
           ]}
           style={{
             // backgroundColor: "red",
@@ -37,7 +37,7 @@ export default function App() {
           <Text
             style={{
               fontSize: 28,
-              color: appColor.lightText,
+              color: appColors.lightText,
               fontFamily: "Quicksand-Bold",
             }}
           >
@@ -46,7 +46,7 @@ export default function App() {
           <Text
             style={{
               fontSize: 18,
-              color: appColor.lightText,
+              color: appColors.lightText,
               fontFamily: "Quicksand-Regular",
               textAlign: "center",
               paddingHorizontal: 30,

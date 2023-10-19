@@ -16,7 +16,7 @@ const Divider = ({ horizontal, style }) => {
     <View
       style={[
         {
-          backgroundColor: appColor.lightText,
+          backgroundColor: appColors.lightText,
         },
         orientation,
         style,

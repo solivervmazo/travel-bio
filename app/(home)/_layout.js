@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { StyleSheet, View, SafeAreaView, ImageBackground } from "react-native";
 import { Slot, Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
-import { appColor, appStyles } from "../../src/themes";
+import { appConstants, appColors, appStyles } from "../../src/themes";
 import HomeScreenTitle from "../../src/components/HomeScreenTitle";
 
 const ScreenLayout = () => {
@@ -16,7 +16,7 @@ const ScreenLayout = () => {
           style={styles.screenCoverWrapper}
         >
           <LinearGradient
-            colors={["transparent", appColor.darkBackground]}
+            colors={[appColors.transparent, appColors.darkBackground]}
             style={styles.screenTitleContainer}
           >
             <View style={styles.screenTitleWrapper}>
@@ -31,7 +31,7 @@ const ScreenLayout = () => {
 };
 
 const styles = StyleSheet.create({
-  screenCoverContainer: { height: "40%" },
+  screenCoverContainer: { height: appConstants.COVER_MAX_HEIGHT },
   screenCoverWrapper: {
     flex: 1,
     justifyContent: "flex-end",

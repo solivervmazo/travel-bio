@@ -11,13 +11,13 @@ const ProductContentFooter = () => {
       colors={[
         "transparent",
         "transparent",
-        appColor.darkBackground,
-        appColor.darkBackground,
-        appColor.darkBackground,
+        appColors.darkBackground,
+        appColors.darkBackground,
+        appColors.darkBackground,
       ]}
       style={styles.container}
     >
-      <PrimaryButton text={`Directions`} onPress={bottomSheetHandle} />
+      <PrimaryButton text={`Inquire Now`} onPress={bottomSheetHandle} />
     </LinearGradient>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { appColor, appStyles } from "../../themes";
+import { appColors, appFonts, appSizes, appStyles } from "../../themes";
 import Icon from "../../ui/Icon";
 
 const ProductLocationText = ({
-  size = 12,
+  size = appSizes.Text.regular,
   iconSize,
   textSize,
-  color = appColor.lightText,
+  color = appColors.lightText,
   textColor,
   iconColor,
   iconFill = false,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontFamily: "Quicksand-Regular",
+    fontFamily: appFonts.regular,
   },
 });
 

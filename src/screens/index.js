@@ -1,3 +1,3 @@
 import ProductDetailScreen from "./ProductDetailScreen";
-import ReviewFeedScreen from "./ReviewFeedScreen";
-export { ProductDetailScreen, ReviewFeedScreen };
+import ReviewsFeedScreen from "./ReviewsFeedScreen";
+export { ProductDetailScreen, ReviewsFeedScreen };

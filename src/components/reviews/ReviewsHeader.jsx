@@ -4,6 +4,7 @@ import { Stack } from "expo-router";
 import { IconButton } from "../../components";
 import ContextReviewsScreen from "./ContextReviewsScreen";
 import { ProductNameText } from "../product";
+import { appColors } from "../../themes";
 const ReviewsHeader = () => {
   const { data } = useContext(ContextReviewsScreen);
   return (
@@ -21,7 +22,7 @@ const ReviewsHeader = () => {
         ),
         headerRight: () => (
           <View>
-            <IconButton icon={"Share"} size={32} color={"lightText"} />
+            <IconButton icon={"Share"} size={32} color={appColors.lightText} />
           </View>
         ),
         headerBackVisible: false,

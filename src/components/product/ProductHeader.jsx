@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
 import { IconButton } from "../../components";
+import { appColors } from "../../themes";
 const ProductHeader = () => {
   return (
     <Stack.Screen
@@ -9,7 +10,7 @@ const ProductHeader = () => {
         headerTitle: () => null,
         headerRight: () => (
           <View>
-            <IconButton icon={"Heart"} size={32} color={"lightText"} />
+            <IconButton icon={"Heart"} size={32} color={appColors.lightText} />
           </View>
         ),
         headerBackVisible: false,

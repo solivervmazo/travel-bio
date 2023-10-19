@@ -1,18 +1,15 @@
 import React from "react";
 import {
   View,
-  Text,
   SafeAreaView,
-  Image,
   FlatList,
   StyleSheet,
   ScrollView,
 } from "react-native";
 import { useHeaderHeight } from "@react-navigation/elements";
-import { appColor, appSpacing, appStyles } from "../../src/themes";
+import { appColors, appSizes, appSpacing, appStyles } from "../../src/themes";
 import SectionHeader from "../../src/components/SectionHeader";
 import ProductCard from "../../src/components/product/ProductCard";
-import { useRouter } from "expo-router";
 
 const data = [
   {
@@ -36,7 +33,11 @@ const WelcomeIndex = () => {
       <ScrollView>
         <View style={styles.sectionContainer}>
           <View style={styles.sectionWrapper}>
-            <SectionHeader title={"Most Popular"} btnText={"See all"} />
+            <SectionHeader
+              size={appSizes.Text.medium}
+              title={"Most Popular"}
+              btnText={"See all"}
+            />
           </View>
           <View
             style={{
@@ -55,7 +56,11 @@ const WelcomeIndex = () => {
         </View>
         <View style={styles.sectionContainer}>
           <View style={styles.sectionWrapper}>
-            <SectionHeader title={"Nearby"} btnText={"See all"} />
+            <SectionHeader
+              size={appSizes.Text.medium}
+              title={"Nearby"}
+              btnText={"See all"}
+            />
           </View>
           <View
             style={{

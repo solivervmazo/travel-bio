@@ -1,4 +1,4 @@
 import Divider from "./Divider";
 import Icon from "./Icon";
-
-export { Divider, Icon };
+import Spacer from "./Spacer";
+export { Divider, Spacer, Icon };

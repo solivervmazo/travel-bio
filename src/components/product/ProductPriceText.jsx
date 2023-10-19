@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { appColor, appStyles } from "../../themes";
+import { appColors, appSizes, appStyles } from "../../themes";
 
 const ProductPriceText = ({
-  size = 10,
-  color = appColor.lightText,
+  size = appSizes.Text.regular,
+  color = appColors.lightText,
   priceText = "0",
   unitText = "night",
   priceSize,

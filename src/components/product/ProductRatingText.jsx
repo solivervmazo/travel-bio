@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { appColor, appStyles } from "../../themes";
+import { appColors, appSizes, appStyles } from "../../themes";
 import Icon from "../../ui/Icon";
 
 const ProductRatingText = ({
   text,
-  color = appColor.lightText,
-  size = 10,
+  color = appColors.lightText,
+  size = appSizes.Text.regular,
   textColor,
   textSize,
   iconSize,
@@ -21,7 +21,7 @@ const ProductRatingText = ({
       <Icon.Star
         fill={true}
         size={iconSize || size}
-        color={appColor.themeColor}
+        color={appColors.themeColor}
         style={shadowed ? shadow : {}}
       />
       <Text

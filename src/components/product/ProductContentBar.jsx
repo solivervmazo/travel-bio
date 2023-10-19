@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Icon } from "../../ui";
-import { appColor, appStyles } from "../../themes";
+import { appColors, appStyles } from "../../themes";
 
 const ProductContentBar = (props) => {
   const { data } = props;
@@ -24,13 +24,13 @@ const ProductContentBar = (props) => {
               <View style={{ alignItems: "center", justifyContent: "center" }}>
                 {Icon.Icons(icon, {
                   size: 20,
-                  color: appColor.lightText,
+                  color: appColors.lightText,
                   style: { ...appStyles.textShadow },
                 })}
                 <Text
                   style={{
                     fontSize: 12,
-                    color: appColor.lightTextSecondary,
+                    color: appColors.lightTextSecondary,
                     ...appStyles.textShadow,
                   }}
                 >
@@ -47,7 +47,7 @@ const ProductContentBar = (props) => {
         <View style={{ alignItems: "center", justifyContent: "space-around" }}>
           <Icon.MenuDot
             size={25}
-            color={appColor.lightText}
+            color={appColors.lightText}
             style={{ ...appStyles.textShadow }}
           />
         </View>

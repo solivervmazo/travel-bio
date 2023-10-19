@@ -1,40 +1,50 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { appColors, appSizes, appFonts, appConstants } from "../themes";
 
 const SectionHeader = (props) => {
   const {
     title,
-    size = 20,
+    color = appColors.lightText,
+    titleColor,
+    size = appSizes.Text.regular,
     titleSize,
     btnText,
+    btnTextColor = appColors.themeColor,
     onLink = () => {},
     containerStyle = {},
   } = props;
   return (
     <View
-      style={{
-        flexDirection: "row",
-        alignItems: "flex-end",
-        justifyContent: "space-between",
-        ...containerStyle,
-      }}
+      style={[
+        styles.container,
+        {
+          ...containerStyle,
+        },
+      ]}
     >
       <Text
-        style={{
-          fontSize: titleSize || size,
-          color: appColor.lightText,
-          fontFamily: "Quicksand-Bold",
-        }}
+        style={[
+          styles.title,
+          {
+            fontSize: titleSize || size,
+            color: titleColor || color,
+          },
+        ]}
       >
         {title}
       </Text>
-      <TouchableOpacity onPress={onLink} activeOpacity={0.8}>
+      <TouchableOpacity
+        onPress={onLink}
+        activeOpacity={appConstants.ACTIVE_OPACITY}
+      >
         <Text
-          style={{
-            fontSize: 12,
-            color: appColor.themeColor,
-            fontFamily: "Quicksand-Regular",
-          }}
+          style={[
+            styles.btnText,
+            {
+              color: btnTextColor,
+            },
+          ]}
         >
           {btnText}
         </Text>
@@ -43,5 +53,18 @@ const SectionHeader = (props) => {
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: "row",
+    alignItems: "flex-end",
+    justifyContent: "space-between",
+  },
+  title: {
+    fontFamily: appFonts.bold,
+  },
+  btnText: {
+    fontSize: appSizes.Text.small,
+    fontFamily: appFonts.medium,
+  },
+});
 export default SectionHeader;

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import { appColor, appSpacing, appStyles } from "../../themes";
+import { appColors, appSpacing, appStyles } from "../../themes";
 import { Icon } from "../../ui";
 import PrimaryButton from "../PrimaryButton";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
@@ -31,7 +31,8 @@ const REVIEWS = [
     id: 4,
     name: "Alice Williams",
     rating: 5,
-    review: "Absolutely fantastic! Top-notch service and amenities.",
+    review:
+      "Absolutely fantastic! Top-notch service and amenities. Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.",
     dtime: "October 10, 2023",
   },
   {
@@ -82,7 +83,7 @@ const ReviewsContentHeader = () => {
   return (
     <View
       style={{
-        backgroundColor: appColor.darkBgSecondary,
+        backgroundColor: appColors.darkBgSecondary,
         flexShrink: 1,
         borderRadius: 8,
         overflow: "hidden",
@@ -106,8 +107,8 @@ const ReviewsContentHeader = () => {
           style={{
             fontSize: 42,
             fontFamily: "Quicksand-Bold",
-            color: appColor.lightText,
-            lineHeight: 50,
+            color: appColors.lightText,
+            lineHeight: 42,
           }}
         >
           4.5
@@ -124,17 +125,17 @@ const ReviewsContentHeader = () => {
               alignItems: "center",
             }}
           >
-            <Icon.Star color={appColor.themeColor} fill={true} />
-            <Icon.Star color={appColor.themeColor} fill={true} />
-            <Icon.Star color={appColor.themeColor} fill={true} />
-            <Icon.Star color={appColor.themeColor} fill={true} />
-            <Icon.Star color={appColor.themeColor} fill={false} />
+            <Icon.Star color={appColors.themeColor} fill={true} />
+            <Icon.Star color={appColors.themeColor} fill={true} />
+            <Icon.Star color={appColors.themeColor} fill={true} />
+            <Icon.Star color={appColors.themeColor} fill={true} />
+            <Icon.Star color={appColors.themeColor} fill={false} />
           </View>
           <Text
             style={{
               fontSize: 13,
               fontFamily: "Quicksand-Medium",
-              color: appColor.lightText,
+              color: appColors.lightText,
             }}
           >
             74 Reviews
@@ -150,7 +151,15 @@ const ReviewsContentHeader = () => {
   );
 };
 
-const ReviewCard = ({ data }) => {
+const ReviewCard = ({ data, onToggle }) => {
+  const [numLines, setNumLines] = useState({ numberOfLines: 5 });
+  const textToggle =
+    onToggle ||
+    useCallback(() => {
+      numLines?.numberOfLines
+        ? setNumLines({})
+        : setNumLines({ numberOfLines: 5 });
+    }, [numLines]);
   return (
     <View style={{ flexDirection: "row", marginVertical: 4 }}>
       <ImageBackground
@@ -171,7 +180,7 @@ const ReviewCard = ({ data }) => {
           borderRadius: 8,
           overflow: "hidden",
           padding: 10,
-          backgroundColor: appColor.darkBgSecondary,
+          backgroundColor: appColors.darkBgSecondary,
           justifyContent: "center",
           alignItems: "center",
         }}
@@ -183,7 +192,7 @@ const ReviewCard = ({ data }) => {
               numberOfLines={1}
               style={{
                 fontFamily: "Quicksand-Bold",
-                color: appColor.lightText,
+                color: appColors.lightText,
                 fontSize: 13,
               }}
             >
@@ -192,7 +201,7 @@ const ReviewCard = ({ data }) => {
             <Text
               style={{
                 fontFamily: "Quicksand-Medium",
-                color: appColor.lightText,
+                color: appColors.lightText,
                 fontSize: 11,
               }}
             >
@@ -212,14 +221,14 @@ const ReviewCard = ({ data }) => {
             }).map((rev) => (
               <Icon.Star
                 size={13}
-                color={appColor.themeColor}
+                color={appColors.themeColor}
                 fill={rev.fill}
                 key={rev.id}
               />
             ))}
             <Text
               style={{
-                color: appColor.lightText,
+                color: appColors.lightText,
                 fontSize: 11,
                 paddingStart: 3,
               }}
@@ -228,13 +237,14 @@ const ReviewCard = ({ data }) => {
         </View>
         <View style={{ width: "100%", marginTop: 10 }}>
           <Text
-            numberOfLines={5}
+            {...numLines}
             style={{
               fontFamily: "Quicksand-Medium",
               fontSize: 13,
-              color: appColor.lightText,
+              color: appColors.lightText,
               ...appStyles.textShadow,
             }}
+            onPress={textToggle}
           >
             {data.review}
           </Text>
@@ -270,5 +280,6 @@ const ReviewsContent = () => {
 };
 
 const styles = StyleSheet.create({});
-
 export default ReviewsContent;
+
+export { ReviewCard };

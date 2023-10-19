@@ -1,32 +1,29 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { appColor, appStyles } from "../../themes";
+import { appColors, appFonts, appSizes, appStyles } from "../../themes";
 
 const ProductNameText = ({
   text,
-  size = 20,
-  color = appColor.lightText,
+  size = appSizes.Text.regular,
+  color = appColors.lightText,
   style = {},
 }) => {
   return (
     <Text
       numberOfLines={1}
       ellipsizeMode={"tail"}
-      style={[
-        appStyles.textShadow,
-        {
-          fontSize: size,
-          color: color,
-          fontFamily: "Quicksand-Medium",
-          ...style,
-        },
-      ]}
+      style={[styles.text, { fontSize: size, color: color, ...style }]}
     >
       {text}
     </Text>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  text: {
+    fontFamily: appFonts.medium,
+    ...appStyles.textShadow,
+  },
+});
 
 export default ProductNameText;

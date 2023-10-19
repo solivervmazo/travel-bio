@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
 import IconButton from "../src/components/IconButton";
-import HeaderTitle from "../src/components/HeaderTitle";
+import HeaderTitle from "../src/components/app/HeaderTitle";
+import { appColors, appSizes } from "../src/themes";
 
 // SplashScreen.preventAutoHideAsync();
 
@@ -38,14 +39,18 @@ const AppLayout = () => {
         },
         headerTitle: () => <HeaderTitle />,
         headerRight: () => (
-          <IconButton icon={"Search"} size={32} color={"lightText"} />
+          <IconButton
+            icon={"Search"}
+            size={appSizes.IconButton.medium}
+            color={appColors.lightText}
+          />
         ),
         headerLeft: () =>
           router.canGoBack() ? (
             <IconButton
               icon={"Back"}
-              size={32}
-              color={"lightText"}
+              size={appSizes.IconButton.medium}
+              color={appColors.lightText}
               onPress={router.back}
             />
           ) : null,

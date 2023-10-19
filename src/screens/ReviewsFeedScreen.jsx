@@ -1,13 +1,12 @@
 import { ImageBackground, SafeAreaView, StyleSheet, View } from "react-native";
 import React from "react";
-import { appColor, appConstants, appStyles } from "../themes";
-import { ScrollView } from "react-native-gesture-handler";
+import { appColors, appConstants, appStyles } from "../themes";
 import { Slot } from "expo-router";
 import { ReviewsHeader } from "../components/reviews";
 import { LinearGradient } from "expo-linear-gradient";
 import { useHeaderHeight } from "@react-navigation/elements";
 
-const ReviewFeedScreen = () => {
+const ReviewsFeedScreen = () => {
   const headerHeight = useHeaderHeight();
   return (
     <SafeAreaView style={appStyles.screenContainer}>
@@ -19,7 +18,7 @@ const ReviewFeedScreen = () => {
       />
       <View style={styles.screenContentContainer}>
         <LinearGradient
-          colors={["transparent", appColor.darkBackground]}
+          colors={["transparent", appColors.darkBackground]}
           style={{ height: headerHeight }}
         />
         <View style={styles.screenContentWrapper}>
@@ -45,8 +44,8 @@ const styles = StyleSheet.create({
   },
   screenContentWrapper: {
     flexGrow: 1,
-    backgroundColor: appColor.darkBackground,
+    backgroundColor: appColors.darkBackground,
   },
 });
 
-export default ReviewFeedScreen;
+export default ReviewsFeedScreen;

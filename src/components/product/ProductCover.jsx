@@ -1,9 +1,10 @@
 import React from "react";
 import { StyleSheet, View, Animated, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { appConstants } from "../../themes";
+import { appColors, appConstants, appSizes } from "../../themes";
 import { IconButton } from "../../components";
 import ProductScreenTitle from "./ProductScreenTitle";
+import { Spacer } from "../../ui";
 
 const coverMaxHeight = appConstants.COVER_MAX_HEIGHT;
 const coverMinHeight = appConstants.COVER_MIN_HEIGHT;
@@ -40,13 +41,21 @@ const ProductCover = ({ offset, scrollStartHide }) => {
               paddingHorizontal: appSpacing.screenPaddingLeft,
             }}
           >
-            <IconButton icon={"Share"} size={28} color={"lightText"} />
-            <View style={{ height: 10 }} />
-            <IconButton icon={"Place"} size={28} color={"lightText"} />
+            <IconButton
+              icon={"Share"}
+              size={appSizes.IconButton.regular}
+              color={appColors.lightText}
+            />
+            <Spacer horizontal={false} size={10} />
+            <IconButton
+              icon={"Place"}
+              size={appSizes.IconButton.regular}
+              color={appColors.lightText}
+            />
           </Animated.View>
         ) : null}
         <LinearGradient
-          colors={["transparent", appColor.darkBackground]}
+          colors={["transparent", appColors.darkBackground]}
           style={styles.screenTitleContainer}
         >
           <View style={styles.screenTitleWrapper}>

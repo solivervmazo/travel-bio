@@ -12,13 +12,13 @@ const ProductDescription = ({
       <View
         style={{
           padding: 10,
-          backgroundColor: appColor.darkBgSecondary,
+          backgroundColor: appColors.darkBgSecondary,
           borderRadius: 8,
         }}
       >
         <Text
           style={{
-            color: appColor.lightText,
+            color: appColors.lightText,
             fontFamily: "Quicksand-Regular",
             fontSize: 13,
           }}
@@ -27,7 +27,7 @@ const ProductDescription = ({
           <Text
             style={{
               paddingHorizontal: 1,
-              color: appColor.themeColor,
+              color: appColors.themeColor,
               fontFamily: "Quicksand-Bold",
               fontSize: 13,
             }}

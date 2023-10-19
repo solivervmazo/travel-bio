@@ -1,18 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import { appColor } from "../../themes";
+import { appColors, appSizes } from "../../themes";
 import { Link } from "expo-router";
 import ProductLocationText from "./ProductLocationText";
 import ProductRatingText from "./ProductRatingText";
 import ProductPriceText from "./ProductPriceText";
 const ProductCard = ({ src, onPress = () => {} }) => {
   return (
-    <View
-      style={{
-        width: 200,
-        backgroundColor: appColor.darkBgSecondary,
-      }}
-    >
+    <View style={styles.container}>
       <Image
         source={src}
         style={{
@@ -21,48 +16,58 @@ const ProductCard = ({ src, onPress = () => {} }) => {
         }}
         resizeMode="cover"
       />
-      <View style={{ padding: 10 }}>
+      <View style={styles.productNameWrapper}>
         <Link href={"/detail"} asChild>
           <Text
-            style={{
-              color: appColor.lightText,
-              fontFamily: "Quicksand-Bold",
-              fontSize: 13,
-              textDecorationColor: appColor.lightText,
-              textDecorationLine: "underline",
-            }}
+            numberOfLines={1}
+            ellipsizeMode="tail"
+            style={styles.productName}
           >
             Hotel Dark Diamon
           </Text>
         </Link>
         <ProductLocationText
-          size={12}
-          color={appColor.lightText}
+          size={appSizes.Text.small}
+          color={appColors.lightText}
           text={"Davao City, PH"}
         />
 
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginTop: 20,
-          }}
-        >
+        <View style={styles.footerContainer}>
           <ProductPriceText
-            size={10}
-            color={appColor.lightText}
+            size={appSizes.Text.small}
+            color={appColors.lightText}
             priceText={`$280`}
             unitText={`night`}
           />
 
-          <ProductRatingText text={`4.9 (74 reviews)`} size={10} />
+          <ProductRatingText text={`4.9`} size={appSizes.Text.small} />
         </View>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: 200,
+    backgroundColor: appColors.darkBgSecondary,
+  },
+  productNameWrapper: {
+    padding: 10,
+  },
+  productName: {
+    color: appColors.lightText,
+    fontFamily: appFonts.bold,
+    fontSize: appSizes.Text.semiRegular,
+    textDecorationColor: appColors.lightText,
+    textDecorationLine: "underline",
+  },
+  footerContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
+  },
+});
 
 export default ProductCard;

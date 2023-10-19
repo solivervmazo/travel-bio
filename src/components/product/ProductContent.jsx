@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
-import { appColor, appSpacing, appStyles } from "../../themes";
+import { appColors, appSpacing, appStyles } from "../../themes";
 import { Divider } from "../../ui";
 import SectionHeader from "../SectionHeader";
 import ProductDescription from "./ProductDescription";
 import ProductGallery from "./ProductGallery";
 import ProductContentBar from "./ProductContentBar";
 import { useRoutes } from "../../routes";
+import { ReviewCard } from "../reviews/ReviewsContent";
 const OFFERS = [
   {
     id: 1,
@@ -66,6 +67,38 @@ const PHOTOS = [
   },
 ];
 
+const REVIEWS = [
+  {
+    id: 1,
+    name: "Soliver Mazo",
+    rating: 4,
+    review: "Great",
+    dtime: "September 28, 2023",
+  },
+  {
+    id: 2,
+    name: "Emma Johnson",
+    rating: 5,
+    review: "Excellent service! I would highly recommend.",
+    dtime: "October 2, 2023",
+  },
+  {
+    id: 3,
+    name: "John Smith",
+    rating: 3,
+    review: "Good experience. Room for improvement.",
+    dtime: "October 5, 2023",
+  },
+  {
+    id: 4,
+    name: "Alice Williams",
+    rating: 5,
+    review:
+      "Absolutely fantastic! Top-notch service and amenities. Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.Absolutely fantastic! Top-notch service and amenities.",
+    dtime: "October 10, 2023",
+  },
+];
+
 const ProductContent = () => {
   const routes = useRoutes();
   const [description, setDescription] = useState(LONGTEXT.slice(0, 300));
@@ -90,7 +123,7 @@ const ProductContent = () => {
       <Divider
         horizontal
         style={{
-          backgroundColor: appColor.lightTextSecondary,
+          backgroundColor: appColors.lightTextSecondary,
           marginVertical: 15,
         }}
       />
@@ -102,7 +135,7 @@ const ProductContent = () => {
       <Divider
         horizontal
         style={{
-          backgroundColor: appColor.lightTextSecondary,
+          backgroundColor: appColors.lightTextSecondary,
           marginVertical: 15,
         }}
       />
@@ -120,7 +153,11 @@ const ProductContent = () => {
         containerStyle={{ marginVertical: 10 }}
         onLink={() => routes.reviews({ category: `hotel`, id: 1 })}
       />
-      <View style={{ height: 100, backgroundColor: "red", width: "100%" }} />
+      <View style={{ width: "100%" }}>
+        {REVIEWS.map((data) => (
+          <ReviewCard data={data} key={data.id} />
+        ))}
+      </View>
     </View>
   );
 };

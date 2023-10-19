@@ -1,5 +1,7 @@
 import appConstants from "./appConstants";
-import appColor from "./appColor";
+import appColors from "./appColors";
 import appSpacing from "./appSpacing";
 import appStyles from "./appStyles";
-export { appColor, appSpacing, appStyles, appConstants };
+import appSizes from "./appSizes";
+import appFonts from "./appFonts";
+export { appSizes, appColors, appSpacing, appStyles, appConstants, appFonts };
