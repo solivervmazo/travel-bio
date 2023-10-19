@@ -1,17 +1,12 @@
 import React, { useCallback, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TouchableOpacity,
-  ImageBackground,
-} from "react-native";
+import { StyleSheet, View } from "react-native";
 import { appColor, appSpacing, appStyles } from "../../themes";
 import { Divider } from "../../ui";
-import Icon from "../../ui/Icon";
 import SectionHeader from "../SectionHeader";
+import ProductDescription from "./ProductDescription";
+import ProductGallery from "./ProductGallery";
+import ProductContentBar from "./ProductContentBar";
+import { useRoutes } from "../../routes";
 const OFFERS = [
   {
     id: 1,
@@ -71,136 +66,27 @@ const PHOTOS = [
   },
 ];
 
-const ProductDescription = ({
-  description,
-  truncated = false,
-  onToggle = () => {},
-}) => {
-  return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onToggle}>
-      <View
-        style={{
-          padding: 10,
-          backgroundColor: appColor.darkBgSecondary,
-          borderRadius: 8,
-        }}
-      >
-        <Text
-          style={{
-            color: appColor.lightText,
-            fontFamily: "Quicksand-Regular",
-            fontSize: 13,
-          }}
-        >
-          {description}
-          <Text
-            style={{
-              paddingHorizontal: 1,
-              color: appColor.themeColor,
-              //fontFamily: "Quicksand-Bold"Medium",
-              fontSize: 13,
-            }}
-          >{`  Read ${truncated ? "more" : "less"}`}</Text>
-        </Text>
-      </View>
-    </TouchableOpacity>
-  );
-};
-
-const ProductGallery = () => {
-  return (
-    <FlatList
-      horizontal
-      data={PHOTOS}
-      keyExtractor={(item) => item.id}
-      showsHorizontalScrollIndicator={false}
-      ItemSeparatorComponent={() => <View style={{ width: 10 }} />}
-      renderItem={({ item: item }) => (
-        <ImageBackground
-          source={item.src}
-          style={{
-            height: 80,
-            backgroundColor: "red",
-            aspectRatio: "1/1",
-          }}
-          key={item.id}
-        ></ImageBackground>
-      )}
-    />
-  );
-};
-
 const ProductContent = () => {
+  const routes = useRoutes();
   const [description, setDescription] = useState(LONGTEXT.slice(0, 300));
   const [truncated, setTruncated] = useState(true);
-  // const toggleDescription = useCallback(() => {
-  //   if (!truncated) {
-  //     setDescription(LONGTEXT.slice(0, 300));
-  //     setTruncated(!truncated);
-  //   } else {
-  //     setDescription(LONGTEXT);
-  //     setTruncated(!truncated);
-  //   }
-  // }, [description, truncated]);
-  const toggleDescription = () => {};
+  const toggleDescription = useCallback(() => {
+    if (!truncated) {
+      setDescription(LONGTEXT.slice(0, 300));
+      setTruncated(!truncated);
+    } else {
+      setDescription(LONGTEXT);
+      setTruncated(!truncated);
+    }
+  }, [description, truncated]);
   return (
-    <SafeAreaView
+    <View
       style={[
         appStyles.screenContainer,
-        { paddingHorizontal: appSpacing.screenPaddingLeft },
+        { paddingBottom: 70, paddingHorizontal: appSpacing.screenPaddingLeft },
       ]}
     >
-      <View
-        style={{
-          width: "100%",
-          flexDirection: "row",
-        }}
-      >
-        <View style={{ flexGrow: 1 }}>
-          <FlatList
-            horizontal
-            data={OFFERS}
-            renderItem={(item) => {
-              const {
-                item: { icon, title },
-              } = item;
-              return (
-                <View
-                  style={{ alignItems: "center", justifyContent: "center" }}
-                >
-                  {Icon.Icons(icon, {
-                    size: 20,
-                    color: appColor.lightText,
-                    style: { ...appStyles.textShadow },
-                  })}
-                  <Text
-                    style={{
-                      fontSize: 12,
-                      color: appColor.lightTextSecondary,
-                      ...appStyles.textShadow,
-                    }}
-                  >
-                    {title}
-                  </Text>
-                </View>
-              );
-            }}
-            ItemSeparatorComponent={() => <View style={{ width: 20 }} />}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
-        <View style={{ flexShrink: 1 }}>
-          <View
-            style={{ alignItems: "center", justifyContent: "space-around" }}
-          >
-            <Icon.MenuDot
-              size={25}
-              color={appColor.lightText}
-              style={{ ...appStyles.textShadow }}
-            />
-          </View>
-        </View>
-      </View>
+      <ProductContentBar data={OFFERS} />
       <Divider
         horizontal
         style={{
@@ -226,8 +112,16 @@ const ProductContent = () => {
         btnText={`See all`}
         containerStyle={{ marginBottom: 10 }}
       />
-      <ProductGallery />
-    </SafeAreaView>
+      <ProductGallery data={PHOTOS} />
+      <SectionHeader
+        title={`Reviews(74)`}
+        titleSize={18}
+        btnText={`See all`}
+        containerStyle={{ marginVertical: 10 }}
+        onLink={() => routes.reviews({ category: `hotel`, id: 1 })}
+      />
+      <View style={{ height: 100, backgroundColor: "red", width: "100%" }} />
+    </View>
   );
 };
 

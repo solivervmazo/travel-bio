@@ -31,7 +31,7 @@ const BlurButton = (props) => {
           <Text
             style={{
               color: btnStateTextColor,
-              //fontFamily: "Quicksand-Regular",
+              fontFamily: "Quicksand-Regular",
               fontWeight: btnStateTextWeight,
               fontSize: 13,
               marginEnd: 5,

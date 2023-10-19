@@ -7,7 +7,7 @@ const SectionHeader = (props) => {
     size = 20,
     titleSize,
     btnText,
-    onPress = () => {},
+    onLink = () => {},
     containerStyle = {},
   } = props;
   return (
@@ -28,7 +28,7 @@ const SectionHeader = (props) => {
       >
         {title}
       </Text>
-      <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
+      <TouchableOpacity onPress={onLink} activeOpacity={0.8}>
         <Text
           style={{
             fontSize: 12,

@@ -5,21 +5,11 @@ import { Divider } from "../../ui";
 import ProductLocationText from "./ProductLocationText";
 import ProductPriceText from "./ProductPriceText";
 import ProductRatingText from "./ProductRatingText";
+import ProductNameText from "./ProductNameText";
 const ProductScreenTitle = () => {
   return (
     <View style={styles.productIntroWrapper}>
-      <Text
-        style={[
-          appStyles.textShadow,
-          {
-            fontSize: 20,
-            color: appColor.lightText,
-            //fontFamily: "Quicksand-Bold"Medium",
-          },
-        ]}
-      >
-        Hotel Postinio Berry
-      </Text>
+      <ProductNameText text={`Hotel Postinio Berry`} />
       <View
         style={{
           width: "100%",

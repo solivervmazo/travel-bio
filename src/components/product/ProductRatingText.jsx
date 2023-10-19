@@ -44,7 +44,7 @@ const ProductRatingText = ({
 const styles = StyleSheet.create({
   text: {
     marginStart: 5,
-    //fontFamily: "Quicksand-Bold"SemiBold",
+    fontFamily: "Quicksand-SemiBold",
   },
 });
 

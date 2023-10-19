@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { StyleSheet, View, SafeAreaView, ImageBackground } from "react-native";
-import { useHeaderHeight } from "@react-navigation/elements";
 import { Slot, Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 import { appColor, appStyles } from "../../src/themes";
 import HomeScreenTitle from "../../src/components/HomeScreenTitle";
+
 const ScreenLayout = () => {
   return (
     <SafeAreaView style={appStyles.screenContainer}>

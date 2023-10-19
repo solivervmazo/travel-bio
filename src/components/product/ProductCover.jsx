@@ -9,16 +9,16 @@ const coverMaxHeight = appConstants.COVER_MAX_HEIGHT;
 const coverMinHeight = appConstants.COVER_MIN_HEIGHT;
 const scrollDistance = coverMaxHeight - coverMinHeight;
 
-const ProductCover = ({ offset, showButton }) => {
+const ProductCover = ({ offset, scrollStartHide }) => {
   const animateCoverHeight = offset.interpolate({
-    inputRange: [0, scrollDistance],
+    inputRange: [0, 500],
     outputRange: [coverMaxHeight, coverMinHeight],
     extrapolate: "clamp",
   });
 
   const animateButtonOpacity = offset.interpolate({
     inputRange: [0, scrollDistance / 2, scrollDistance],
-    outputRange: [1, 0.8, 0],
+    outputRange: [1, 0.5, 0],
     extrapolate: "clamp",
   });
 
@@ -31,7 +31,7 @@ const ProductCover = ({ offset, showButton }) => {
         resizeMode="cover"
         style={styles.screenCoverWrapper}
       >
-        {showButton ? (
+        {scrollStartHide ? (
           <Animated.View
             style={{
               flexDirection: "column",
@@ -46,13 +46,7 @@ const ProductCover = ({ offset, showButton }) => {
           </Animated.View>
         ) : null}
         <LinearGradient
-          colors={[
-            "transparent",
-            "transparent",
-            appColor.darkBackground,
-            appColor.darkBackground,
-            appColor.darkBackground,
-          ]}
+          colors={["transparent", appColor.darkBackground]}
           style={styles.screenTitleContainer}
         >
           <View style={styles.screenTitleWrapper}>
