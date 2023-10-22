@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import ContextScreenProduct from "./ContextScreenProduct";
 import { appColors, appStyles } from "../../themes";
 import SectionHeader from "../SectionHeader";
-import Icon from "../../ui/Icon";
+import { Icon } from "../../ui/";
 const INQUIRES = [
   {
     id: "a1",

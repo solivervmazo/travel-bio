@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Text, View } from "react-native";
 import { Stack } from "expo-router";
-import { IconButton } from "../../components";
+import { IconButton } from "../../ui";
 import ContextReviewsScreen from "./ContextReviewsScreen";
 import { ProductNameText } from "../product";
 import { appColors } from "../../themes";

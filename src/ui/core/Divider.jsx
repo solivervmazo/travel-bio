@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { appColor } from "../themes";
+import { appColor } from "../../themes";
 
 const Divider = ({ horizontal, style }) => {
   const orientation = horizontal

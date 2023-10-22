@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { BlurView } from "expo-blur";
-import Icon from "../ui/Icon";
+import Icon from "./core/Icon";
 import { TouchableOpacity } from "react-native";
 import { appColors, appSizes } from "../themes";
 const IconButton = ({

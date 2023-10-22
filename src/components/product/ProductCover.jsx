@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Animated, ImageBackground } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { appColors, appConstants, appSizes } from "../../themes";
-import { IconButton } from "../../components";
+import { IconButton } from "../../ui";
 import ProductScreenTitle from "./ProductScreenTitle";
 import { Spacer } from "../../ui";
 

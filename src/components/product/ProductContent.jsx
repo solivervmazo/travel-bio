@@ -127,6 +127,7 @@ const ProductContent = () => {
         titleSize={appSizes.Text.medium}
         btnText={`See all`}
         containerStyle={{ marginBottom: 10 }}
+        onLink={() => routes.gallery().go()}
       />
       <ProductGallery data={PHOTOS} />
       <SectionHeader

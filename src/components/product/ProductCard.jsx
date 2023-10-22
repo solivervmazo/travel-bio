@@ -5,7 +5,10 @@ import { Link } from "expo-router";
 import ProductLocationText from "./ProductLocationText";
 import ProductRatingText from "./ProductRatingText";
 import ProductPriceText from "./ProductPriceText";
+import ProductNameText from "./ProductNameText";
+import { useRoutes } from "../../routes";
 const ProductCard = ({ src, onPress = () => {} }) => {
+  const routes = useRoutes();
   return (
     <View style={styles.container}>
       <Image
@@ -17,15 +20,12 @@ const ProductCard = ({ src, onPress = () => {} }) => {
         resizeMode="cover"
       />
       <View style={styles.productNameWrapper}>
-        <Link href={"/detail"} asChild>
-          <Text
-            numberOfLines={1}
-            ellipsizeMode="tail"
-            style={styles.productName}
-          >
-            Hotel Dark Diamon
-          </Text>
-        </Link>
+        <ProductNameText
+          text={`Hotel Dark Diamon`}
+          numLines={1}
+          style={styles.productName}
+          onLink={() => routes.detail().go()}
+        />
         <ProductLocationText
           size={appSizes.Text.small}
           color={appColors.lightText}

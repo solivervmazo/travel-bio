@@ -1,12 +1,15 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState as useRef } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { appFonts, appSizes, appStyles, appColors } from "../../themes";
 import UserAvatar from "../UserAvatar";
 import { Icon } from "../../ui";
+import { LinearGradient } from "expo-linear-gradient";
+
+const REVIEW_MESSAGE_MAX_HEIGHT = 100;
 
 const ReviewCard = ({ data, onToggle }) => {
-  const [numLines, setNumLines] = useState({ numberOfLines: 5 });
-
+  const [numLines, setNumLines] = useRef({});
+  const [canToggle, setCanToggle] = useRef({ init: 0, can: false });
   const textToggle =
     onToggle ||
     useCallback(() => {
@@ -14,6 +17,16 @@ const ReviewCard = ({ data, onToggle }) => {
         ? setNumLines({})
         : setNumLines({ numberOfLines: 5 });
     }, [numLines]);
+
+  const onCanToggle = useCallback(
+    (init, can) => {
+      if (canToggle.init == 0) {
+        setCanToggle({ init: init, can: can });
+        if (can) setNumLines({ numberOfLines: 5 });
+      }
+    },
+    [canToggle, numLines]
+  );
 
   return (
     <View style={styles.container}>
@@ -51,9 +64,58 @@ const ReviewCard = ({ data, onToggle }) => {
           </View>
         </View>
         <View style={styles.reviewMessageContainer}>
-          <Text {...numLines} style={styles.reviewMessage} onPress={textToggle}>
+          <Text
+            onLayout={({ nativeEvent: { layout } }) => {
+              if (
+                canToggle.init == 0 &&
+                layout.height > REVIEW_MESSAGE_MAX_HEIGHT
+              ) {
+                onCanToggle(1, true);
+              } else {
+                onCanToggle(1, false);
+              }
+            }}
+            {...numLines}
+            style={[
+              styles.reviewMessage,
+              {
+                marginBottom: canToggle.can
+                  ? numLines?.numberOfLines
+                    ? 0
+                    : 40
+                  : 0,
+              },
+            ]}
+          >
             {data.review}
           </Text>
+          {canToggle.can ? (
+            <LinearGradient
+              colors={[
+                appColors.transparent,
+                appColors.darkBgSecondary,
+                appColors.darkBgSecondary,
+              ]}
+              style={{
+                width: "100%",
+                height: 40,
+                position: "absolute",
+                bottom: 0,
+                justifyContent: "flex-end",
+                alignItems: "center",
+              }}
+            >
+              <Text
+                style={{
+                  fontSize: appSizes.Text.semiRegular,
+                  color: appColors.themeColor,
+                  fontFamily: appFonts.bold,
+                  ...appStyles.textDarkShadow,
+                }}
+                onPress={textToggle}
+              >{`Read ${numLines?.numberOfLines ? "more" : "less"}`}</Text>
+            </LinearGradient>
+          ) : null}
         </View>
       </View>
     </View>

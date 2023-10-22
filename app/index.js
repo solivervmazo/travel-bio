@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, SafeAreaView, ImageBackground } from "react-native";
-import { Link } from "expo-router";
+import { Link, Slot } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Stack } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";

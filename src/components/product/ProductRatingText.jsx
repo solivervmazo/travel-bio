@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { appColors, appSizes, appStyles } from "../../themes";
-import Icon from "../../ui/Icon";
+import { Icon } from "../../ui/";
 
 const ProductRatingText = ({
   text,

@@ -1,6 +1,7 @@
 import React from "react";
 import { FlatList, ImageBackground, StyleSheet, View } from "react-native";
 import { Spacer } from "../../ui";
+import { GalleryThumbnail } from "../gallery";
 const ProductGallery = (props) => {
   const { data } = props;
   return (
@@ -11,11 +12,7 @@ const ProductGallery = (props) => {
       showsHorizontalScrollIndicator={false}
       ItemSeparatorComponent={() => <Spacer size={10} />}
       renderItem={({ item: item }) => (
-        <ImageBackground
-          source={item.src}
-          style={styles.image}
-          key={item.id}
-        ></ImageBackground>
+        <GalleryThumbnail source={item.src} size={120} aspectRatio={"1/1"} />
       )}
     />
   );
@@ -24,7 +21,6 @@ const ProductGallery = (props) => {
 const styles = StyleSheet.create({
   image: {
     height: 120,
-    backgroundColor: "red",
     aspectRatio: "1/1",
   },
 });

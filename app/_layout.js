@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { StyleSheet } from "react-native";
-import { Stack } from "expo-router";
+import { StyleSheet, Text } from "react-native";
+import { Slot, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { useRouter } from "expo-router";
-import IconButton from "../src/components/IconButton";
+import { IconButton } from "../src/ui";
 import HeaderTitle from "../src/components/app/HeaderTitle";
 import { appColors, appSizes } from "../src/themes";
 
@@ -30,33 +30,35 @@ const AppLayout = () => {
   }
 
   return (
-    <Stack
-      onLayout={onLayoutRootView}
-      screenOptions={{
-        headerTintColor: "#fff",
-        headerTitleStyle: {
-          fontWeight: "bold",
-        },
-        headerTitle: () => <HeaderTitle />,
-        headerRight: () => (
-          <IconButton
-            icon={"Search"}
-            size={appSizes.IconButton.medium}
-            color={appColors.lightText}
-          />
-        ),
-        headerLeft: () =>
-          router.canGoBack() ? (
+    <>
+      <Stack
+        onLayout={onLayoutRootView}
+        screenOptions={{
+          headerTintColor: "#fff",
+          headerTitleStyle: {
+            fontWeight: "bold",
+          },
+          headerTitle: () => <HeaderTitle />,
+          headerRight: () => (
             <IconButton
-              icon={"Back"}
+              icon={"Search"}
               size={appSizes.IconButton.medium}
               color={appColors.lightText}
-              onPress={router.back}
             />
-          ) : null,
-        headerTransparent: true,
-      }}
-    />
+          ),
+          headerLeft: () =>
+            router.canGoBack() ? (
+              <IconButton
+                icon={"Back"}
+                size={appSizes.IconButton.medium}
+                color={appColors.lightText}
+                onPress={router.back}
+              />
+            ) : null,
+          headerTransparent: true,
+        }}
+      />
+    </>
   );
 };
 

@@ -7,12 +7,24 @@ const ProductNameText = ({
   size = appSizes.Text.regular,
   color = appColors.lightText,
   style = {},
+  numLines = 1,
+  onLink = () => {},
+  textDecoration = "none",
 }) => {
   return (
     <Text
-      numberOfLines={1}
+      numberOfLines={numLines}
       ellipsizeMode={"tail"}
-      style={[styles.text, { fontSize: size, color: color, ...style }]}
+      style={[
+        styles.text,
+        {
+          fontSize: size,
+          color: color,
+          textDecorationLine: textDecoration,
+          ...style,
+        },
+      ]}
+      onPress={onLink}
     >
       {text}
     </Text>

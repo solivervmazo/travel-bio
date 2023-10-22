@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
-import { appColors, appSizes, appSpacing, appStyles } from "../../themes";
-import { Icon } from "../../ui";
+import React from "react";
+import { StyleSheet, View } from "react-native";
+import { appSpacing } from "../../themes";
 import { FlatList } from "react-native-gesture-handler";
 import ReviewCard from "./ReviewCard";
 import ReviewsContentHeader from "./ReviewsContentHeader";
@@ -92,19 +91,19 @@ const ReviewsFeed = () => {
 
 const ReviewsContent = () => {
   return (
-    <View
-      style={{
-        paddingHorizontal: appSpacing.screenPaddingLeft,
-        height: "100%",
-      }}
-    >
+    <View style={styles.contentContainer}>
       <ReviewsContentHeader />
       <ReviewsFeed />
     </View>
   );
 };
 
-const styles = StyleSheet.create({});
-export default ReviewsContent;
+const styles = StyleSheet.create({
+  contentContainer: {
+    paddingHorizontal: appSpacing.screenPaddingLeft,
+    height: "100%",
+  },
+});
 
+export default ReviewsContent;
 export { ReviewCard };

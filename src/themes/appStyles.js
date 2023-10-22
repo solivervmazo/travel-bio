@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
-import appColor from "./appColors";
+import appColors from "./appColors";
+import appSpacing from "./appSpacing";
 
 export default appStyles = StyleSheet.create({
   screenContainer: {
-    flex: 1,
+    height: "100%",
     backgroundColor: appColors.darkBackground,
   },
   textLightShadow: {
@@ -15,5 +16,9 @@ export default appStyles = StyleSheet.create({
     textShadowColor: "rgba(0, 0, 0, 0.75)",
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 5,
+  },
+  contentMainContainer: {
+    paddingHorizontal: appSpacing.screenPaddingLeft,
+    height: "100%",
   },
 });

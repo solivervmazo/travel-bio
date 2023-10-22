@@ -1,7 +1,7 @@
 import React from "react";
 import { View } from "react-native";
 import { Stack } from "expo-router";
-import { IconButton } from "../../components";
+import { IconButton } from "../../ui";
 import { appColors } from "../../themes";
 const ProductHeader = () => {
   return (

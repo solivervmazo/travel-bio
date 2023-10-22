@@ -2,7 +2,7 @@ import React from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { appSizes } from "../themes";
+import { appSizes } from "../../themes";
 
 const Icons = (icon, props = {}) => Icon[icon](props);
 
