@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { appColor } from "../../themes";
 import ContextScreenProduct from "./ContextScreenProduct";
-import PrimaryButton from "../PrimaryButton";
+import { PrimaryButton } from "../../ui/";
 const ProductContentFooter = () => {
   const { bottomSheetHandle } = useContext(ContextScreenProduct);
   return (

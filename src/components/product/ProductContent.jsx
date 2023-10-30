@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { appColors, appSizes, appSpacing, appStyles } from "../../themes";
 import { Divider } from "../../ui";
-import SectionHeader from "../SectionHeader";
+import { SectionHeader } from "../../ui";
 import ProductDescription from "./ProductDescription";
 import ProductGallery from "./ProductGallery";
 import ProductContentBar from "./ProductContentBar";

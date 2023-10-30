@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Icon } from "../../ui";
 import { appColors, appFonts, appSizes } from "../../themes";
-import PrimaryButton from "../PrimaryButton";
+import { PrimaryButton } from "../../ui";
 
 const ReviewsContentHeader = () => {
   return (

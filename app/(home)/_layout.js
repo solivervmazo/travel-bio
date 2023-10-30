@@ -1,50 +1,45 @@
-import React, { useRef } from "react";
-import { StyleSheet, View, SafeAreaView, ImageBackground } from "react-native";
-import { Slot, Stack } from "expo-router";
-import { LinearGradient } from "expo-linear-gradient";
-import { appConstants, appColors, appStyles } from "../../src/themes";
-import HomeScreenTitle from "../../src/components/HomeScreenTitle";
+import React, { useCallback, useRef, useState } from "react";
+import { Animated } from "react-native";
+import { ContextScreenHome } from "../../src/components/home";
+import { HomeScreen } from "../../src/screens";
 
 const ScreenLayout = () => {
+  const bottomSheetRef = useRef();
+  const scrollOffsetY = useRef(new Animated.Value(0)).current;
+  const [scrollStartHide, setScrollStartHide] = useState(true);
+
+  const bottomSheetHandle = useCallback(() => {
+    bottomSheetRef.current?.present();
+  }, [bottomSheetRef]);
+
+  const scrollListener = useCallback(
+    Animated.event([{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }], {
+      useNativeDriver: false,
+      listener: (event) => {
+        if (event.nativeEvent.contentOffset.y > 120) {
+          setScrollStartHide(false);
+        } else {
+          setScrollStartHide(true);
+        }
+      },
+    }),
+    [scrollStartHide]
+  );
+
   return (
-    <SafeAreaView style={appStyles.screenContainer}>
-      <Stack.Screen />
-      <View style={styles.screenCoverContainer}>
-        <ImageBackground
-          source={require("../../assets/hotel.jpg")}
-          resizeMode="cover"
-          style={styles.screenCoverWrapper}
-        >
-          <LinearGradient
-            colors={[appColors.transparent, appColors.darkBackground]}
-            style={styles.screenTitleContainer}
-          >
-            <View style={styles.screenTitleWrapper}>
-              <HomeScreenTitle />
-            </View>
-          </LinearGradient>
-        </ImageBackground>
-      </View>
-      <Slot />
-    </SafeAreaView>
+    <ContextScreenHome.Provider
+      value={{
+        bottomSheetRef,
+        bottomSheetHandle,
+      }}
+    >
+      <HomeScreen
+        scrollOffsetY={scrollOffsetY}
+        scrollStartHide={scrollStartHide}
+        scrollListener={scrollListener}
+      />
+    </ContextScreenHome.Provider>
   );
 };
-
-const styles = StyleSheet.create({
-  screenCoverContainer: { height: appConstants.COVER_MAX_HEIGHT },
-  screenCoverWrapper: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-  screenTitleContainer: {
-    height: "30%",
-    alignItems: "center",
-  },
-  screenTitleWrapper: {
-    width: "100%",
-    position: "absolute",
-    bottom: 0,
-  },
-});
 
 export default ScreenLayout;

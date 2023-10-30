@@ -16,7 +16,7 @@ const ScreenLayout = () => {
     Animated.event([{ nativeEvent: { contentOffset: { y: scrollOffsetY } } }], {
       useNativeDriver: false,
       listener: (event) => {
-        if (event.nativeEvent.contentOffset.y > 90) {
+        if (event.nativeEvent.contentOffset.y > 120) {
           setScrollStartHide(false);
         } else {
           setScrollStartHide(true);

@@ -3,7 +3,7 @@ import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { StyleSheet, Text, View } from "react-native";
 import ContextScreenProduct from "./ContextScreenProduct";
 import { appColors, appStyles } from "../../themes";
-import SectionHeader from "../SectionHeader";
+import { SectionHeader } from "../../ui";
 import { Icon } from "../../ui/";
 const INQUIRES = [
   {

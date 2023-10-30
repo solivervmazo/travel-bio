@@ -1,7 +1,7 @@
 import React, { useCallback, useState as useRef } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { appFonts, appSizes, appStyles, appColors } from "../../themes";
-import UserAvatar from "../UserAvatar";
+import { UserAvatar } from "../../ui";
 import { Icon } from "../../ui";
 import { LinearGradient } from "expo-linear-gradient";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { BlurView } from "expo-blur";
-import { Icon } from "../ui/";
+import Icon from "./core/Icon";
 import { appColors, appConstants, appSizes } from "../themes";
 import appFonts from "../themes/appFonts";
 

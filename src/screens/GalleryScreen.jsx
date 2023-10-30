@@ -27,9 +27,7 @@ const GalleryScreen = () => {
           colors={["transparent", appColors.darkBackground]}
           style={{ height: headerHeight }}
         />
-        <View style={styles.screenContentWrapper}>
-          <Slot />
-        </View>
+        <View style={styles.screenContentWrapper}>{/* <Slot /> */}</View>
       </View>
     </SafeAreaView>
   );

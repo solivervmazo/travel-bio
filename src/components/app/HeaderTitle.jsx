@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     fontSize: appSizes.Text.large,
     color: appColors.lightText,
     fontFamily: appFonts.bold,
+    paddingStart: 3,
   },
 });
 
