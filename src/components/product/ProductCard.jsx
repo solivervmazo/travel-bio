@@ -49,7 +49,7 @@ const ProductCard = ({ src, onPress = () => {} }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 200,
+    // width: 200,
     backgroundColor: appColors.darkBgSecondary,
   },
   productNameWrapper: {

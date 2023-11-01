@@ -74,6 +74,11 @@ const Dial = (props) => {
   return icon.materialicons2("phone-dial", "phone-dial-outline");
 };
 
+const Gps = (props) => {
+  const icon = new _Icon(props);
+  return icon.materialicons("gps-fixed", "gps-fixed");
+};
+
 const Heart = (props) => {
   const icon = new _Icon(props);
   return icon.ionicons("md-heart-outline", "md-heart-sharp");
@@ -141,6 +146,7 @@ const Icon = {
   Dial,
   Car,
   Heart,
+  Gps,
   Location,
   MenuDot,
   Pet,

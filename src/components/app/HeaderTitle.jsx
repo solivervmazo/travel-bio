@@ -3,11 +3,13 @@ import { StyleSheet, Text, View } from "react-native";
 import { appColors, appSizes, appSpacing, appStyles } from "../../themes/";
 import { Icon } from "../../ui/";
 import appFonts from "../../themes/appFonts";
+import BackButton from "./BackButton";
 
 const HeaderTitle = () => {
   return (
     <View style={styles.wrapper}>
       <View style={styles.locationWrapper}>
+        <BackButton />
         <Icon.Location
           size={appSizes.Icon.regular}
           color={appColors.lightText}

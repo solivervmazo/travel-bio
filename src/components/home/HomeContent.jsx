@@ -1,8 +1,9 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext } from "react";
+import { StyleSheet, View } from "react-native";
 import { SectionHeader } from "../../ui";
 import { FlatList } from "react-native-gesture-handler";
 import { ProductCard } from "../product/";
+import ContextScreenHome from "./ContextScreenHome";
 
 const data = [
   {
@@ -20,6 +21,7 @@ const data = [
 ];
 
 const HomeContentSection = ({ title, products, btnText = "See all" }) => {
+  const { handleSearchClick } = useContext(ContextScreenHome);
   return (
     <View style={styles.sectionContainer}>
       <View style={styles.sectionWrapper}>
@@ -27,6 +29,7 @@ const HomeContentSection = ({ title, products, btnText = "See all" }) => {
           size={appSizes.Text.medium}
           title={title}
           btnText={btnText}
+          onLink={handleSearchClick}
         />
       </View>
       <View

@@ -7,6 +7,12 @@ export const useRoutes = () => {
     reviews: (params) => {
       router.push("/reviews");
     },
+    explore: (params) => {
+      const routeUrl = "/explore";
+      return {
+        go: (strat = "push") => router.push(routeUrl),
+      };
+    },
     detail: (params) => {
       const routeUrl = "/detail";
       return {

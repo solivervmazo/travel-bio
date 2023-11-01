@@ -2,9 +2,13 @@ import React, { useCallback, useRef, useState } from "react";
 import { Animated } from "react-native";
 import { ContextScreenHome } from "../../src/components/home";
 import { HomeScreen } from "../../src/screens";
+import { useRouter } from "expo-router";
+import { useRoutes } from "../../src/routes";
 
 const ScreenLayout = () => {
+  const routes = useRoutes();
   const bottomSheetRef = useRef();
+  const router = useRouter();
   const scrollOffsetY = useRef(new Animated.Value(0)).current;
   const [scrollStartHide, setScrollStartHide] = useState(true);
 
@@ -26,11 +30,16 @@ const ScreenLayout = () => {
     [scrollStartHide]
   );
 
+  const handleSearchClick = () => {
+    routes.explore().go();
+  };
+
   return (
     <ContextScreenHome.Provider
       value={{
         bottomSheetRef,
         bottomSheetHandle,
+        handleSearchClick,
       }}
     >
       <HomeScreen

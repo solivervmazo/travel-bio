@@ -2,9 +2,10 @@ import React, { useContext } from "react";
 import { BottomSheetModal, BottomSheetView } from "@gorhom/bottom-sheet";
 import { StyleSheet, Text, View } from "react-native";
 import ContextScreenProduct from "./ContextScreenProduct";
-import { appColors, appStyles } from "../../themes";
+import { appColors, appConstants, appSpacing, appStyles } from "../../themes";
 import { SectionHeader } from "../../ui";
 import { Icon } from "../../ui/";
+import MapView from "react-native-maps";
 const INQUIRES = [
   {
     id: "a1",
@@ -74,11 +75,12 @@ const ProductBottomSheet = (props) => {
         marginBottom: 20,
         borderRadius: 0,
         backgroundColor: appColors.lightBgSecondary,
+        flex: 1,
       }}
     >
       <View
         style={{
-          flex: 1,
+          // flex: 1,
           marginHorizontal: 20,
         }}
       >
@@ -113,10 +115,24 @@ const ProductBottomSheet = (props) => {
           </View>
         ))}
       </View>
+      <View
+        style={{
+          padding: 15,
+          paddingBottom:
+            appConstants.FOOTER_AUX_PADDING + appSpacing.screenPaddingBottom,
+        }}
+      >
+        <MapView style={styles.map} />
+      </View>
     </BottomSheetModal>
   );
 };
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  map: {
+    width: "100%",
+    height: "100%",
+  },
+});
 
 export default ProductBottomSheet;

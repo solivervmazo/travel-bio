@@ -15,7 +15,6 @@ const ImageViewContent = () => {
   const { uri } = params;
   const imgContainerHeight =
     (dimensions.height - headerHeight - statusBarHeight) * 0.8;
-  console.log(imgContainerHeight, headerHeight, statusBarHeight);
 
   return (
     <View style={[styles.contentContainer]}>
